@@ -67,8 +67,8 @@ function showQuestion() {
 
 function selectAnswer(i) {
     if (quiz[currentQuestion]) {
-        if (i === quiz[currentQuestion].correct) {
-            score++;
+        if (i === quiz[currentQuestion].correct ) {
+        timer+=10; score++;
         } else {
             timer -= 10;
         }
