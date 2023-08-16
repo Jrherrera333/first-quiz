@@ -17,7 +17,7 @@ const quiz = [
     {
         "question": "What is the capital of USA?",
         "choices": ["Pennsylvania", "North Carolina", "Washington DC", "Boston"],
-        "correct": 0
+        "correct": 2
     }
 ];
 
@@ -34,19 +34,26 @@ const choiceEls = [
     document.getElementById('choice3')
 ]
 
-document.getElementById('start-btn').addEventListener('click', startQuiz);
+var startButton = document.getElementById('start-btn');
+var saveButton = document.getElementById("saveButton");
 
-for (let i = 0;i < choiceEls.length; i++) {
-    choiceEls[i].parentElement.addEventListener('click', function(){
+
+startButton.addEventListener('click', function () {
+    startQuiz();
+})
+
+/// giving all the button choices the click event
+for (let i = 0; i < choiceEls.length; i++) {
+    choiceEls[i].parentElement.addEventListener('click', function () {
         selectAnswer(i);
     })
 }
 
 function startQuiz() {
     document.getElementById('quiz').style.display = 'block';
-    document.getElementById('start-btn').style.display = 'none';
+    document.getElementById('start-btn').style.display = 'none'
 
-    timerInterval = setInterval(function(){
+    timerInterval = setInterval(function () {
         timer--;
         document.getElementById('time').innerText = timer;
 
@@ -67,23 +74,56 @@ function showQuestion() {
 
 function selectAnswer(i) {
     if (quiz[currentQuestion]) {
-        if (i === quiz[currentQuestion].correct ) {
-        timer+=10; score++;
+        //Checking to see if you choice the correct choice
+        if (i === quiz[currentQuestion].correct) {
+            //if you pick correct
+            timer += 10;
+            score++;
+            console.log("Correct!!")
+            console.log(score)
         } else {
+
+            //if you pick incorrect
             timer -= 10;
+            console.log("Wrong!!")
+            console.log(score)
         }
-    } 
-
+    }
+    //moves to the next question
     currentQuestion++;
-
+    //checking to see if there is a next question
     if (currentQuestion < quiz.length) {
+        //show the next question
         showQuestion();
     } else {
+        //finish the game
         endQuiz();
     }
 }
 
 function endQuiz() {
-    clearInterval(timerInterval);
-    alert('Quiz ended! Your score: ' + score);
-} 
+
+    let endPageSection = document.querySelector(".score")
+    let questionSection = document.getElementById("quiz")
+    let scoreElement = document.getElementById("showScore")
+    let nameEl = document.getElementById("name");
+    questionSection.style.display = "none"
+    endPageSection.style.display = "block"
+    nameEl.textContent = "Your Name is: " + nameEl
+    scoreElement.textContent = "Your Final Score is: " + score
+
+}
+
+function saveData() {
+    var username = document.querySelector("#name").value;
+    console.log("Name is: " + JSON.stringify(username) + " and the final score is: ", score);
+
+    //save it:
+    //localStorage.setItem("name", username);
+    //localStorage.setItem("score", score);
+
+    //get access to the save name input tag
+    //localStorage.getItem("username")
+}
+
+saveButton.addEventListener("click", saveData);

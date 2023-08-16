@@ -8,7 +8,15 @@
 </head>
 <body>
     <div id="container">
+    <!-- <div class="container2"> 
+        <input id="name1">Enter Name Here</input>
+    </div> -->
+
+
+        <!-- Start Page -->
         <button id="start-btn">Start Quiz</button>
+
+        <!-- Question's Page -->
         <div id="quiz" style="display: none">
             <h2 id="question"></h2>
             <button id="answer1"><span id="choice0"></span></button>
@@ -18,6 +26,17 @@
         </div>
         <div id="timer">
             Time left: <span id="time">90</span>
+        </div>
+
+
+        <!-- End Page -->
+        <div class="score">
+            <h1 id="showScore"></h1>
+            <p>Place enter your initials to save your score: </p>
+
+            <h2> Name: </h2>
+            <input type="text" id="name"> 
+            <button id="saveButton">Enter</button>
         </div>
         <script src="./script.js"></script>
     </div>

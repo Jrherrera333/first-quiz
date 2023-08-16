@@ -10,6 +10,8 @@ body {
 }
 
 button {
+    display: flex;
+    flex: initial;
     margin: 20px;
     padding: 10px;
     font-size: 16px;
@@ -27,4 +29,19 @@ button {
     align-items: center;
     height: 100vh;
 }
+.container2 {
+display:flex;
+position:absolute;
+top: 10px;
+left: 10px;;
+justify-content: space-between;
+}
 
+.score {
+    height: 100%;
+    margin: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+}
