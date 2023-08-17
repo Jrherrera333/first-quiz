@@ -103,20 +103,25 @@ function selectAnswer(i) {
 
 function endQuiz() {
 
-    let endPageSection = document.querySelector(".score")
-    let questionSection = document.getElementById("quiz")
-    let scoreElement = document.getElementById("showScore")
+    let endPageSection = document.querySelector(".score");
+    let questionSection = document.getElementById("quiz");
+    let scoreElement = document.getElementById("showScore");
+    let timerElement = document.getElementById('time');
     let nameEl = document.getElementById("name");
+    
     questionSection.style.display = "none"
     endPageSection.style.display = "block"
+    timerElement.style.display = "none"
     nameEl.textContent = "Your Name is: " + nameEl
     scoreElement.textContent = "Your Final Score is: " + score
 
 }
-
+let outputDiv = document.getElementById("output");
 function saveData() {
     var username = document.querySelector("#name").value;
-    console.log("Name is: " + JSON.stringify(username) + " and the final score is: ", score);
+    let outputText = "Name is: " + JSON.stringify(username) + " and the final score is: "+ score;
+
+    outputDiv.textContent = outputText;
 
     //save it:
     //localStorage.setItem("name", username);
